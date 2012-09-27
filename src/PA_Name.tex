@@ -1,0 +1,166 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\input{setup}
+
+\usepackage{fancyhdr} %für Kopf- und Fußzeilen
+\usepackage[utf8]{inputenc} %Zeichenkodierung
+\usepackage{caption}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage[pdftex,pdfborder={0 0 0}]{hyperref} %Kreiert Links von der Table of Content zu Kapiteln (ohne optische Hervorhebung)
+
+\opt{acronym}{\usepackage[footnote]{acronym}}
+\opt{figures}{\usepackage{graphicx}}
+\opt{tables}{
+	\usepackage{hhline} %% extended line features for tables with \hhline{}
+	\usepackage{multirow} %% merges several cells over rows: \multirow{Zeilen}{Breite}{Inhalt}; over columns: \multicolumn{Spalten}{Ausrichtung}{Inhalt}
+	\usepackage{colortbl} %% use defined colors in tables
+	\usepackage{booktabs} %% better horizontal lines in tables with \toprule[<breite>], \midrule[<breite>], \cmidrule[<breite>](trim){a-b}, \bottomrule 
+	\usepackage{supertabular}
+}
+\opt{listings}{
+	\usepackage{listings} 
+	\listingssetup
+}
+
+\newcommand{
+	\settocdepth}[1] {
+		\addtocontents{toc}{\protect\setcounter{tocdepth}{#1}
+	}
+}
+
+\hypersetup{
+	pdftitle={\reporttype\ \opt{conf}{\confidential\ }- \reporttitle\ - \student},
+	pdfauthor={\student},
+	pdfsubject={\reporttitle},
+	pdfkeywords={\reporttype, \dhbws, \company}
+} 
+
+\graphicspath{{./ref/images/}}
+
+\newlength{\iconwidth}
+\setlength{\iconwidth}{1cm}
+\definecolor{boxheadcol}{gray}{.6}
+\definecolor{boxcol}{gray}{.9}
+\input{environments}
+
+\title{\pebericht}
+\author{\student}
+\date{\handoverdate}
+\begin{document}
+\pagestyle{fancy}  
+\fancyhfoffset{\marginparsep}
+\renewcommand{\footrulewidth}{1.0pt}
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\headheight}{30pt}
+
+\chead{\reporttype\ \opt{conf}{- \confidential}}
+\lhead{\includegraphics*[width=2.0cm]{dhbwlogo_small}}
+\rhead{\includegraphics*[width=2.0cm]{\companylogosmall}}
+
+\cfoot{\student, \kurs\\ \dhbw\\ \company,\ \educationdepartment,\ \lokation\ }
+\opt{doublepage}{
+	\lfoot{\ifthispageodd{}{\thepage}}	
+	\rfoot{\ifthispageodd{\thepage}{}}
+}
+\opt{singlepage}{
+	\lfoot{}	
+	\rfoot{\thepage}
+}
+
+\pagenumbering{Roman}
+
+\opt{en}{\pdfbookmark[1]{Titlepage}{titlepage}}
+\opt{de}{\pdfbookmark[1]{Titelseite}{titlepage}}
+\begin{titlepage} 
+	\input{titlepage}
+\end{titlepage} 
+ 
+\clearpage
+\shipout\null
+\addtocounter{page}{1}
+
+\include{sections/declaration}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{Abstract}
+\include{sections/abstract}
+\clearpage
+
+\phantomsection
+\opt{en}{\addcontentsline{toc}{section}{Content}}
+\opt{de}{\addcontentsline{toc}{section}{Inhaltsverzeichnis}}
+\begin{spacing}{1}
+\tableofcontents
+\end{spacing}
+\clearpage
+
+\opt{acronym}{
+	\phantomsection
+	\opt{en}{\addcontentsline{toc}{section}{List of abbreviations}}
+	\opt{de}{\addcontentsline{toc}{section}{Abk{\"u}rzungsverzeichnis}}
+	\opt{en}{\section*{List of abbreviations}}
+	\opt{de}{\section*{Abk{\"u}rzungsverzeichnis}}
+	\begin{acronym}[Internship]
+	\input{acronym}
+	\end{acronym} 
+	\clearpage
+}
+
+\phantomsection
+\opt{figures}{
+	\opt{en}{\addcontentsline{toc}{section}{List of Figures}}
+	\opt{de}{\addcontentsline{toc}{section}{Figurenverzeichnis}}
+	\listoffigures
+}
+
+\opt{tables}{
+	\opt{en}{\addcontentsline{toc}{section}{List of Tables}}
+	\opt{de}{\addcontentsline{toc}{section}{Tabellenverzeichnis}}
+	\listoftables 
+}
+\opt{listings}{
+	\opt{en}{\addcontentsline{toc}{section}{Listings}}
+	\opt{de}{\addcontentsline{toc}{section}{Quellcodeverzeichnis}}
+	\lstlistoflistings
+}
+
+\onehalfspacing 
+
+\clearpage
+\opt{intro}{
+	\phantomsection
+	\opt{en}{\addcontentsline{toc}{section}{Introduction}}
+	\opt{de}{\addcontentsline{toc}{section}{Vorwort}}
+	\opt{en}{\section*{Introduction}}
+	\opt{de}{\section*{Vorwort}}
+	\include{sections/intro}
+}
+%\shipout\null
+
+\pagenumbering{arabic}
+\include{sections/content}
+\pagenumbering{roman}
+
+\clearpage
+\newpage
+
+\singlespacing
+
+\opt{bib}{
+	\phantomsection
+	\opt{en}{\addcontentsline{toc}{section}{References}}
+	\opt{de}{\addcontentsline{toc}{section}{Referenzen}}
+	\bibliography{ref/bib}{} 
+	\bibliographystyle{phcpc}
+}
+\opt{appendix}{
+	\appendix
+	\opt{en}{\pdfbookmark[0]{Appendix}{appendix}}
+	\opt{de}{\pdfbookmark[0]{Anhang}{appendix}}
+	\include{sections/appendix}
+}
+
+\end{document}
