@@ -34,7 +34,7 @@
 	pdftitle={\reporttype\ \opt{conf}{\confidential\ }- \reporttitle\ - \student},
 	pdfauthor={\student},
 	pdfsubject={\reporttitle},
-	pdfkeywords={\reporttype, \dhbws, \company}
+	pdfkeywords={\reporttype, \dhbws\opt{PA}{, \company}}
 } 
 
 \graphicspath{{./ref/images/}}
@@ -59,7 +59,7 @@
 \lhead{\includegraphics*[width=2.0cm]{dhbwlogo_small}}
 \rhead{\includegraphics*[width=2.0cm]{\companylogosmall}}
 
-\cfoot{\student, \kurs\\ \dhbw\\ \company,\ \educationdepartment,\ \lokation\ }
+\cfoot{\student, \kurs\\ \dhbw\opt{PA}{\\ \company,\ \educationdepartment,\ \lokation\ }}
 \opt{doublepage}{
 	\lfoot{\ifthispageodd{}{\thepage}}	
 	\rfoot{\ifthispageodd{\thepage}{}}

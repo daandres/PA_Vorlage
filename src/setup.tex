@@ -13,14 +13,16 @@
 %% intro --> include introduction file and make bookmark
 %% bib --> make list of references at the end and import bib package. Use bib.bib as bibliography
 %% appendix --> includes appendix. add sections in the file appendix.tex
-  
+%% PA --> inserts at the titlepage the company and such stuff
+%% Study --> insert at the titlepage information without company and such stuff
+
 %% Examples
 %\usepackage[en]{optional}
 %\usepackage[de]{optional} 
 %\usepackage[en,conf]{optional}
 
 %% Recomendation
-\usepackage[en,doublepage,acronym,figures,tables,intro,appendix]{optional} 
+\usepackage[en,doublepage,acronym,figures,tables,intro,appendix,Study]{optional} 
 
 \opt{en}{\usepackage[american]{babel}} 
 \opt{de}{\usepackage[ngerman]{babel}}
@@ -34,10 +36,6 @@
 \newcommand{\reporttitle}{Titel}  
 \newcommand{\reportsubtitle}{Subtitel}
 
-\opt{en}{\newcommand{\reporttype}{Internship Report}}
-\opt{de}{\newcommand{\reporttype}{Projektarbeit}}
-\opt{conf}{\newcommand{\confidential}{Confidential}}
-
 \opt{en}{\newcommand{\reportstart}{startdate}} 
 \opt{de}{\newcommand{\reportstart}{startdatum}} 
 \opt{en}{\newcommand{\reportend}{enddate}}
@@ -46,16 +44,20 @@
 \opt{de}{\newcommand{\handoverdate}{31.13.3113}}
 
 \newcommand{\tutor}{Name Tutor}
-\newcommand{\businessunit}{Business Unit} 
-\newcommand{\department}{Department}
-\newcommand{\company}{Company}
-\opt{en}{\newcommand{\educationdepartment}{Education department}}
-\opt{de}{\newcommand{\educationdepartment}{Ausbildungsabteilung}}
-\opt{en}{\newcommand{\lokation}{Mannheim}}
-\opt{de}{\newcommand{\lokation}{Mannheim}}
-\newcommand{\manager}{Education Manager}
 \newcommand{\companylogo}{ibmlogo} %% filname of logo for titlepage
 \newcommand{\companylogosmall}{ibmlogo} %% filename for logo on all other pages
+
+\opt{PA}{
+	\newcommand{\businessunit}{Business Unit} 
+	\newcommand{\department}{Department}
+	\newcommand{\company}{Company}
+	\newcommand{\companyshort}{Company shortname}
+	\opt{en}{\newcommand{\educationdepartment}{Education department}}
+	\opt{de}{\newcommand{\educationdepartment}{Ausbildungsabteilung}}
+	\opt{en}{\newcommand{\lokation}{Mannheim}}
+	\opt{de}{\newcommand{\lokation}{Mannheim}}
+	\newcommand{\manager}{Education Manager}
+}
 
 \newcommand{\dhbws}{DHBW Mannheim}
 \opt{en}{\newcommand{\dhbw}{BW Cooperative State University Mannheim, Germany}}
@@ -94,3 +96,15 @@
 		}
 	}
 }
+
+%%%%%%%%%%%%
+%% Folgende Angaben müssen nicht verändert werden. Werden aber zur einfacheren ANpassung (falls nötig) hier aufgeführt
+\opt{PA}{
+	\opt{en}{\newcommand{\reporttype}{Internship Report}}
+	\opt{de}{\newcommand{\reporttype}{Projektarbeit}}
+}
+\opt{Study}{
+	\opt{en}{\newcommand{\reporttype}{Study Report}}
+	\opt{de}{\newcommand{\reporttype}{Studienarbeit}}
+}
+\opt{conf}{\newcommand{\confidential}{\companyshort\ Confidential}}

@@ -1,7 +1,7 @@
 \begin{center}
 
 	\vspace{2.2cm}
-	{\large \textbf{\educationdepartment}}\\
+	\opt{PA}{{\large \textbf{\educationdepartment}}\\}
 	\vspace{0.1cm}
 	{\large \textbf{\dhbw}}\\
 	\vspace{2cm}
@@ -19,28 +19,58 @@
 	\vspace{2.4cm}
 	\onehalfspacing
 	  
-	\opt{en}{
-		\begin{tabbing}
-			xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxx\=xxxxxxx\kill
-			Name: \> {\textbf{\student}} \> Company: \> \company,\\
-			{Matriculation}: \> \matrikel \> \> \educationdepartment\ \lokation\\
-			Course: \> \kurs \> {Manager}: \> \manager\\
-			Study course: \> \studiengang \> Department: \> \businessunit \\
-			Study manager: \> \prof \> \> \department \\
-			{Date:} \> \date{31/13/1331} \handoverdate \> {Tutor}: \> \tutor\\
-		\end{tabbing}
+	\opt{PA}{
+		\opt{en}{
+			\begin{tabbing}
+				xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxx\=xxxxxxx\kill
+				Name: \> {\textbf{\student}} \> Company: \> \company,\\
+				{Matriculation}: \> \matrikel \> \> \educationdepartment\ \lokation\\
+				Course: \> \kurs \> {Manager}: \> \manager\\
+				Study course: \> \studiengang \> Department: \> \businessunit \\
+				Study manager: \> \prof \> \> \department \\
+				{Date:} \> \date{31/13/1331} \handoverdate \> {Tutor}: \> \tutor\\
+			\end{tabbing}
+		}
+		   
+		\opt{de}{
+			\begin{tabbing}
+				xxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxx\=xxxxxxx\kill
+				Name: \> {\textbf{\student}} \> Unternehmen: \> \company,\\
+				{Matrikelnummer}: \> \matrikel \> \> \educationdepartment\ \lokation\\
+				Kurs: \> \kurs \> {Manager}: \> \manager\\
+				Studiengang: \> \studiengang \> Abteilung: \> \businessunit \\
+				Studiengangsleiter: \> \prof \> \> \department \\
+				{Datum:} \> \date{31/13/1331} \handoverdate \> {Betreuer}: \> \tutor\\
+			\end{tabbing}
+		}
 	}
-	   
-	\opt{de}{
-		\begin{tabbing}
-			xxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxx\=xxxxxxx\kill
-			Name: \> {\textbf{\student}} \> Unternehmen: \> \company,\\
-			{Matrikelnummer}: \> \matrikel \> \> \educationdepartment\ \lokation\\
-			Kurs: \> \kurs \> {Manager}: \> \manager\\
-			Studiengang: \> \studiengang \> Abteilung: \> \businessunit \\
-			Studiengangsleiter: \> \prof \> \> \department \\
-			{Datum:} \> \date{31/13/1331} \handoverdate \> {Betreuer}: \> \tutor\\
-		\end{tabbing}
+	\opt{Study}{
+		\opt{en}{
+			\begin{tabbing}
+				xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\kill
+				Name: \> {\textbf{\student}}  \\
+				{Matriculation}: \> \matrikel  \\
+				Course: \> \kurs \\
+				Study course: \> \studiengang  \\
+				Study manager: \> \prof  \\
+				{Tutor}: \> \tutor  \\
+				{Date:} \> \date{31/13/1331} \handoverdate \\
+				
+			\end{tabbing}
+		}
+		   
+		\opt{de}{
+			\begin{tabbing}
+				xxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\kill
+				Name: \> {\textbf{\student}} \\
+				{Matrikelnummer}: \> \matrikel \\
+				Kurs: \> \kurs \> \\
+				Studiengang: \> \studiengang \\
+				Studiengangsleiter: \> \prof \\
+				{Betreuer}: \> \tutor \\
+				{Datum:} \> \date{31/13/1331} \handoverdate \\
+			\end{tabbing}
+		}
 	}
 	   
 	\singlespacing 
