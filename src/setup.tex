@@ -22,8 +22,8 @@
 %\usepackage[en,conf]{optional}
 
 %% Recomendation
-\usepackage[en,doublepage,acronym,figures,tables,intro,appendix,Study]{optional} 
-
+\usepackage[de,singlepage,acronym,figures,tables,intro,appendix,PA,conf]{optional} 
+ 
 \opt{en}{\usepackage[american]{babel}} 
 \opt{de}{\usepackage[ngerman]{babel}}
 
@@ -42,16 +42,16 @@
 \opt{de}{\newcommand{\reportend}{enddatum}}
 \opt{en}{\newcommand{\handoverdate}{31/13/3113}}
 \opt{de}{\newcommand{\handoverdate}{31.13.3113}}
-
+ 
 \newcommand{\tutor}{Name Tutor}
-\newcommand{\companylogo}{ibmlogo} %% filname of logo for titlepage
-\newcommand{\companylogosmall}{ibmlogo} %% filename for logo on all other pages
+\newcommand{\companylogo}{icon-hinweis} %% filname of logo for titlepage
+\newcommand{\companylogosmall}{} %% filename for logo on all other pages
 
 \opt{PA}{
 	\newcommand{\businessunit}{Business Unit} 
 	\newcommand{\department}{Department}
 	\newcommand{\company}{Company}
-	\newcommand{\companyshort}{Company shortname}
+	\newcommand{\companyshort}{COMP} %% used in Confidential flag on each site
 	\opt{en}{\newcommand{\educationdepartment}{Education department}}
 	\opt{de}{\newcommand{\educationdepartment}{Ausbildungsabteilung}}
 	\opt{en}{\newcommand{\lokation}{Mannheim}}
