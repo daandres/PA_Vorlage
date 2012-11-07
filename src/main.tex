@@ -1,7 +1,8 @@
 \documentclass[12pt,a4paper]{scrartcl}
 \input{setup}
 
-\usepackage{fancyhdr} %für Kopf- und Fußzeilen
+ \usepackage{fancyhdr} %für Kopf- und Fußzeilen
+%\usepackage{scrpage2}
 \usepackage[utf8]{inputenc} %Zeichenkodierung
 \usepackage{caption}
 \usepackage{calc}
@@ -18,15 +19,35 @@
 	\usepackage{colortbl} %% use defined colors in tables
 	\usepackage{booktabs} %% better horizontal lines in tables with \toprule[<breite>], \midrule[<breite>], \cmidrule[<breite>](trim){a-b}, \bottomrule 
 	\usepackage{supertabular}
-}
+} 
 \opt{listings}{
 	\usepackage{listings} 
 	\listingssetup
 }
 
-\newcommand{
-	\settocdepth}[1] {
-		\addtocontents{toc}{\protect\setcounter{tocdepth}{#1}
+\newcommand{\settocdepth}[1]{
+	\addtocontents{toc}{
+		\protect
+		\setcounter{tocdepth}{#1}
+	}
+}
+
+\newcommand{\head}[1] {
+ 	\lhead{\ifthispageodd{\opt{conf}{\slshape \confidential}}{\slshape #1}}
+ 	\rhead{\ifthispageodd{\slshape #1}{\opt{conf}{\slshape \confidential}}}
+ }
+
+\newcommand{\headAndToc}[1] {
+	\head{#1}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\newcommand{\headAndTocENDE}[2] {
+	\opt{en}{
+		\headAndToc{#1}
+	}
+	\opt{de}{
+		\headAndToc{#2}
 	}
 }
 
@@ -37,6 +58,11 @@
 	pdfkeywords={\reporttype, \dhbws\opt{PA}{, \company}}
 } 
 
+\renewcommand\sectionmark[1]{%
+ \def\sectionname{#1}%
+ \markright{\thesection #1}%oder was aus immer
+ }
+	
 \graphicspath{{./ref/images/}}
 
 \newlength{\iconwidth}
@@ -50,16 +76,25 @@
 \date{\handoverdate}
 \begin{document}
 \pagestyle{fancy}  
+% \pagestyle{scrheadings}
+% \automark[section]{chapter}
 \fancyhfoffset{\marginparsep}
 \renewcommand{\footrulewidth}{1.0pt}
 \renewcommand{\headrulewidth}{1.0pt}
 \renewcommand{\headheight}{30pt}
 
-\chead{\reporttype\ \opt{conf}{- \confidential}}
-\lhead{\includegraphics*[width=2.0cm]{dhbwlogo_small}}
-\rhead{\includegraphics*[width=2.0cm]{\companylogosmall}}
+% \chead{\reporttype\ \opt{conf}{- \confidential}}
+% \lhead{\includegraphics*[width=2.0cm]{dhbwlogo_small}}
+% \rhead{\includegraphics*[width=2.0cm]{\companylogosmall}}
+% \cfoot{\student, \kurs\\ \dhbw\opt{PA}{\\ \company,\ \educationdepartment,\ \lokation\ }}thesection
 
-\cfoot{\student, \kurs\\ \dhbw\opt{PA}{\\ \company,\ \educationdepartment,\ \lokation\ }}
+% \fancyhead[L]{\ifthispageodd{}{\slshape \nouppercase{\leftmark}}}
+% \fancyhead[R]{\ifthispageodd{\slshape \nouppercase{\leftmark}}{}}
+%  \lhead{\ifthispageodd{\opt{conf}{\confidential}}{\slshape \nouppercase{\leftmark}}}
+%  \rhead{\ifthispageodd{\slshape \nouppercase{\leftmark}}{\opt{conf}{\confidential}}}
+ \chead{}
+ \cfoot{}
+ 
 \opt{doublepage}{
 	\lfoot{\ifthispageodd{}{\thepage}}	
 	\rfoot{\ifthispageodd{\thepage}{}}
@@ -81,26 +116,28 @@
 \shipout\null
 \addtocounter{page}{1}
 
-\include{sections/declaration}
+\phantomsection
+\headAndTocENDE{Declaration of Academic Honesty}{Erkl{\"a}rung zur akademischen Ehrlichkeit}
+\opt{en}{\section*{Declaration of Academic Honesty}}
+\opt{de}{\section*{Erkl{\"a}rung zur akademischen Ehrlichkeit}}
+\input{sections/declaration}
 \clearpage
 
 \phantomsection
-\addcontentsline{toc}{section}{Abstract}
+\headAndToc{Abstract}
 \include{sections/abstract}
 \clearpage
 
 \phantomsection
-\opt{en}{\addcontentsline{toc}{section}{Content}}
-\opt{de}{\addcontentsline{toc}{section}{Inhaltsverzeichnis}}
+\headAndTocENDE{Content}{Inhaltsverzeichnis}
 \begin{spacing}{1}
 \tableofcontents
 \end{spacing}
 \clearpage
 
 \opt{acronym}{
-	\phantomsection
-	\opt{en}{\addcontentsline{toc}{section}{List of abbreviations}}
-	\opt{de}{\addcontentsline{toc}{section}{Abk{\"u}rzungsverzeichnis}}
+ 	\phantomsection
+ 	\headAndTocENDE{List of abbreviations}{Abk{\"u}rzungsverzeichnis}
 	\opt{en}{\section*{List of abbreviations}}
 	\opt{de}{\section*{Abk{\"u}rzungsverzeichnis}}
 	\begin{acronym}[Internship]
@@ -111,20 +148,20 @@
 
 \phantomsection
 \opt{figures}{
-	\opt{en}{\addcontentsline{toc}{section}{List of Figures}}
-	\opt{de}{\addcontentsline{toc}{section}{Figurenverzeichnis}}
+ 	\headAndTocENDE{List of Figures}{Abbildungsverzeichnis}
 	\listoffigures
+	\clearpage
 }
 
 \opt{tables}{
-	\opt{en}{\addcontentsline{toc}{section}{List of Tables}}
-	\opt{de}{\addcontentsline{toc}{section}{Tabellenverzeichnis}}
+ 	\headAndTocENDE{List of Tables}{Tabellenverzeichnis}
 	\listoftables 
+	\clearpage
 }
 \opt{listings}{
-	\opt{en}{\addcontentsline{toc}{section}{Listings}}
-	\opt{de}{\addcontentsline{toc}{section}{Quellcodeverzeichnis}}
+ 	\headAndTocENDE{Listings}{Quellcodeverzeichnis}
 	\lstlistoflistings
+	\clearpage
 }
 
 \onehalfspacing 
@@ -132,8 +169,7 @@
 \clearpage
 \opt{intro}{
 	\phantomsection
-	\opt{en}{\addcontentsline{toc}{section}{Introduction}}
-	\opt{de}{\addcontentsline{toc}{section}{Vorwort}}
+	\headAndTocENDE{Introduction}{Vorwort}
 	\opt{en}{\section*{Introduction}}
 	\opt{de}{\section*{Vorwort}}
 	\include{sections/intro}
@@ -141,6 +177,7 @@
 %\shipout\null
 
 \pagenumbering{arabic}
+\head{\nouppercase{\leftmark}}
 \include{sections/content}
 \pagenumbering{roman}
 
@@ -151,13 +188,13 @@
 
 \opt{bib}{
 	\phantomsection
-	\opt{en}{\addcontentsline{toc}{section}{References}}
-	\opt{de}{\addcontentsline{toc}{section}{Referenzen}}
+	\headAndTocENDE{References}{Referenzen}
 	\bibliography{ref/bib}{} 
 	\bibliographystyle{phcpc}
 }
 \opt{appendix}{
 	\appendix
+	\head{\nouppercase{\leftmark}}
 	\opt{en}{\pdfbookmark[0]{Appendix}{appendix}}
 	\opt{de}{\pdfbookmark[0]{Anhang}{appendix}}
 	\include{sections/appendix}

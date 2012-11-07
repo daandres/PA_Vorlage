@@ -22,7 +22,7 @@
 %\usepackage[en,conf]{optional}
 
 %% Recomendation
-\usepackage[de,singlepage,acronym,figures,tables,intro,appendix,PA,conf]{optional} 
+\usepackage[en,doublepage,acronym,figures,tables,intro,appendix,PA,conf]{optional} 
  
 \opt{en}{\usepackage[american]{babel}} 
 \opt{de}{\usepackage[ngerman]{babel}}
@@ -46,7 +46,9 @@
 \newcommand{\tutor}{Name Tutor}
 \newcommand{\companylogo}{icon-hinweis} %% filname of logo for titlepage
 \newcommand{\companylogosmall}{} %% filename for logo on all other pages
-
+\opt{Study}{
+	\newcommand{\reportsemester}{5. - 6. Semester}
+}
 \opt{PA}{
 	\newcommand{\businessunit}{Business Unit} 
 	\newcommand{\department}{Department}
@@ -58,6 +60,8 @@
 	\opt{de}{\newcommand{\lokation}{Mannheim}}
 	\newcommand{\manager}{Education Manager}
 }
+
+
 
 \newcommand{\dhbws}{DHBW Mannheim}
 \opt{en}{\newcommand{\dhbw}{BW Cooperative State University Mannheim, Germany}}
