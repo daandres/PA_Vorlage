@@ -1,28 +1,22 @@
 %% Optional Packages. 
-%% Choose packages you want and put them in a comma seperated list, like the examples. 
-%%
-%% en --> English text and wording
-%% de --> German text and wording
-%% conf --> confidential, including header line with confidential text and a note on the titlepage
-%% doublepage --> Put sitenumbers alternating on the left and on the right. The first number starts always right, so be sure that you insert a blank page with \shipout\null
-%% singlepage --> Put sitenumbers always on the right
-%% acronym --> Use acronyms and print a acronym table. Use acronym.tex to add acronyms
-%% figures --> make list of figures and include graphicx package
-%% tables --> make list of tables and include table packages, also supertabular
-%% listings --> Use listings for source code and create table of listings
-%% intro --> include introduction file and make bookmark
-%% bib --> make list of references at the end and import bib package. Use bib.bib as bibliography
-%% appendix --> includes appendix. add sections in the file appendix.tex
-%% PA --> inserts at the titlepage the company and such stuff
-%% Study --> insert at the titlepage information without company and such stuff
+%% Choose packages you want by using comments in the list below. 
 
-%% Examples
-%\usepackage[en]{optional}
-%\usepackage[de]{optional} 
-%\usepackage[en,conf]{optional}
-
-%% Recomendation
-\usepackage[en,doublepage,acronym,figures,tables,intro,appendix,PA,conf]{optional} 
+\usepackage[
+%% en, %% English text and wording
+de, %% German text and wording
+%%singlepage, %% Put sitenumbers always on the right
+doublepage, %% Put sitenumbers alternating on the left and on the right. The first number starts always right, so be sure that you insert a blank page with \shipout\null
+acronym, %% Use acronyms and print a acronym table. Use acronym.tex to add acronyms
+figures, %% make list of figures and include graphicx package
+tables, %% make list of tables and include table packages, also supertabular
+%% listings, %% Use listings for source code and create table of listings
+intro, %% include introduction file and make bookmark
+bib, %% make list of references at the end and import bib package. Use bib.bib as bibliography
+appendix, %% includes appendix. add sections in the file appendix.tex
+PA, %% inserts at the titlepage the company and such stuff
+%%Study, %% insert at the titlepage information without company and such stuff
+conf %% confidential, including header line with confidential text and a note on the titlepage
+]{optional} 
  
 \opt{en}{\usepackage[american]{babel}} 
 \opt{de}{\usepackage[ngerman]{babel}}
@@ -111,4 +105,7 @@
 	\opt{en}{\newcommand{\reporttype}{Study Report}}
 	\opt{de}{\newcommand{\reporttype}{Studienarbeit}}
 }
-\opt{conf}{\newcommand{\confidential}{\companyshort\ Confidential}}
+\opt{conf}{
+	\opt{en}{\newcommand{\confidential}{\companyshort\ Confidential}}
+	\opt{de}{\newcommand{\confidential}{\companyshort\ Vertraulich}}
+}
