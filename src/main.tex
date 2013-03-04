@@ -1,4 +1,9 @@
-\documentclass[12pt,a4paper]{scrartcl}
+\documentclass[
+12pt,
+a4paper,
+% pointednumbers,        % überschriftnummerierung mit Punkt 
+pointlessnumbers ,      % überschriftnummerierung ohne Punkt 
+]{scrartcl}
 \input{setup}
 
  \usepackage{fancyhdr} %für Kopf- und Fußzeilen
@@ -125,7 +130,7 @@
 \clearpage
 
 \phantomsection
-\headAndTocENDE{Content}{Inhaltsverzeichnis}
+\headAndTocENDE{Contents}{Inhaltsverzeichnis}
 \begin{spacing}{1}
 \tableofcontents
 \end{spacing}
