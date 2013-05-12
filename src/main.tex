@@ -46,8 +46,8 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 }
 
 \newcommand{\head}[1] {
- 	\lhead{\ifthispageodd{}{\slshape #1}}
- 	\rhead{\ifthispageodd{\slshape #1}{}}
+ 	\lhead{\ifthispageodd{}{#1}}
+ 	\rhead{\ifthispageodd{#1}{}}
  }
 
 \newcommand{\headAndToc}[1] {
