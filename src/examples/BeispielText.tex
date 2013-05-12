@@ -1,0 +1,130 @@
+\section{Strukturierung und Gestaltung}
+In Abschnitt \ref{leererAbschnitt} steht nichts, außer unter \ref{interessanterUnterabschnitt} auf Seite \pageref{interessanterUnterabschnitt}.
+
+
+\subsection{Ein Unter-Abschnitt}
+\label{leererAbschnitt}
+
+
+
+\subsubsection{Ein Unter-Unter-Abschnitt}
+\label{interessanterUnterabschnitt}
+
+\paragraph{Ein Absatz mit Überschrift}
+Mit den Standard-Einstellungen stehen für kurze Dokumente (des Typs "`article"') drei nummerierte Gliederungsebenen zur Verfügung.
+
+\subparagraph{Ein Unter-Absatz mit Überschrift}
+Weiter gibt es darunter zwei nicht nummerierte Gliederungsebenen.
+
+
+
+\subsection{Der zweite Unter-Abschnitt}
+Dient der Illustration und enthält keinen weiteren Inhalt,
+\begin{tabular}{|l|c|r|}
+\hline
+eins & zwei & drei \\
+\hline
+Testeintrag & Testeintrag & Testeintrag \\
+\hline
+\end{tabular}
+dafür eine Tabelle mitten im Text und ohne Bezeichnung.
+Viel schöner ist Tabelle \ref{testTabelle}.
+
+\subsection{Aufzählungen}
+Diese gibt es mit nummerierten Labels:
+
+% der optionale Parameter enthält die Art der Darstellung, 
+% Alternativen sind z.B. a), i, (I),  etc.
+\begin{enumerate}[$\rightarrow$ 1:]
+\item Starten Sie am besten mit einem "`All-in-One"'-Installationspaket, wie z.B.\ jenem unter \url{miktex.org}.
+
+\item Mehr Spaß macht es mit einem vernünftigen Editor wie etwa TeXniccenter (\url{texniccenter.org}).
+\end{enumerate}
+
+% durch {} kann man beliebige Abschnitte im Quellcode klammern
+% das Kommando \small wirkt sich nur innerhalb des geklammerten
+% Blocks aus
+
+{\Large
+oder als Aufzählung oder Nummerierung:
+}
+{\small
+\begin{itemize}
+\item Mac-Benutzern sei TexShop empfohlen. Unter \url{http://pages.uoregon.edu/koch/texshop/} gibt es mit TeX Live ein Paket aus Compiler und Editor.
+
+\item JabRef~\cite{JabRefOnlineDoku} ist ein Werkzeug zur Literaturverwaltung. (Damit die Literatur-Verweise funktionieren, müssen Sie BibTeX aufrufen.)
+\end{itemize}
+}
+
+\subsection{Gestaltung}
+Oftmals wird eine 
+% (emph steht für "emphasize")
+\emph{Hervorhebung} 
+einzelner Wörter benötigt, 
+% (textbf steht für "text bold face")
+\textbf{Fettschrift}
+im Fließtext mag -- sparsam eingesetzt --
+zuweilen sinnvoll sein.\footnote{Über Geschmack lässt sich ja streiten.}
+
+% der optionale Parameter "h" gibt an, dass der Block
+% mit der Abbildung vorzugsweise an der aktuellen Position,
+% alternativ unten ("botton") platziert werden soll
+\begin{table}[hb]
+\begin{center}
+\begin{tabular}{c||r|l}
+  & \textbf{Software}	& \textbf{Kosten} \\  
+  \hline
+  1 & Word & 100 EUR, für Studis kostenlos \\
+  \hline
+  2 & \LaTeX & Open Source \\
+  \hline
+\end{tabular}
+\end{center}
+% Beschriftung festlegen:
+\caption{Von Studierenden verwendete Software zur Erstellung eines Berichts.} 
+% ein Label definieren, mit dessen Hilfe man (an beliebiger Stelle im Dokument) Bezug nehmen kann:
+\label{testTabelle}
+\end{table}
+
+Für mathematische Formeln gibt es einen eigenen Modus, um etwa $\forall e \in
+\mathcal{K} \: \: \exists d \in \mathcal{K} \: \: \forall m \in \mathcal{P}:
+D_d(E_e(m)) = m$
+% das $\:$ definiert übrigens einen horizontalen Abstand
+oder $2 = 5 \tmod 3$ zu schreiben. (Ich verwende $a \tmod m$, wenn der Rest
+gemeint ist und ``$\mod$'', wenn es rechts von einer Kongruenzgleichung wie \[
+  2^{20}\equiv 2^{3\times6+2}\equiv (2^6)^3 2^2\equiv 2^2 \equiv 4 \mod 7
+\] steht, die in $(\Z/7\Z)^*$ gilt.
+% Grafiken werden in separaten Dateien gespeichert und lassen sich wie in
+% Abbildung \ref{labelsSolltenMoeglichstAussagekraeftigGewaehltSein} gezeigt
+% einbinden.
+Für die Formatierung von Quellcode jeglicher Couleur gibt es z.B. das Paket
+\emph{listings}, unter \url{ctan.org} finden Sie noch eine ganze Menge mehr
+\ldots Umlaute sind auch kein Problem, wenn Sie \verb|umlaut.sty| einbinden, bei
+``Anführungszeichen'' werden die öffnenden und schließenden unterschieden
+(schauen Sie im Quelltext nach!).
+
+% der optionale Parameter "t" gibt an, dass der Block
+% mit der Abbildung vorzugsweise oben ("top") platziert werden soll
+% \begin{figure}[t]
+% \begin{center}
+% \includegraphics[width=3cm]{grafiken/DHBW-Logo.png}
+% % sorgt für etwas horizontalen Abstand
+% \hspace{0.5cm}
+% % das nächste Bild
+% \includegraphics[width=2cm]{grafiken/testbild.pdf}
+% \end{center}
+% \caption{Das Logo der DHBW (als PNG), daneben ein anderes Bild (PDF). Beide Formate können zur Erzeugung eines PDF-Dokuments unkompliziert verwendet werden.}
+% \label{labelsSolltenMoeglichstAussagekraeftigGewaehltSein}
+% \end{figure}
+
+\clearpage
+\section{Links}
+
+Falls Sie Folien mit \LaTeX\ machen möchten, schauen Sie mal hier\footnote{
+\url{http://amath.colorado.edu/documentation/LaTeX/prosper/}} oder hier\footnote{ 
+\url{http://www.physik.uni-freiburg.de/~tooleh/latex_beamerkurs.pdf}}.
+Für den Anfang empfehle ich die Kombination mit Powerpoint (Formeln kopieren Sie als Grafik in die Präsentation hinein).
+Online-\LaTeX-Editoren für einzelne Formeln gibt es hier\footnote{ 
+\url{http://www.sciweavers.org/free-online-latex-equation-editor}}
+oder hier\footnote{\url{http://www.codecogs.com/latex/eqneditor.php}}. Von unschätzbarem Wert ist zuweilen Detexify\footnote{\url{http://detexify.kirelabs.org/classify.html}}: Sie zeichnen ein Symbol von Hand und bekommen die entsprechenden \LaTeX-Schreibweise genannt.
+

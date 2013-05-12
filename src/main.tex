@@ -14,6 +14,7 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{pdfpages}
+\usepackage{enumerate}
 \usepackage[pdftex,pdfborder={0 0 0}]{hyperref} %Kreiert Links von der Table of Content zu Kapiteln (ohne optische Hervorhebung)
 
 \opt{acronym}{\usepackage[footnote]{acronym}}
@@ -30,6 +31,13 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 	\listingssetup
 }
 
+\hypersetup{
+	pdftitle={\reporttype\ - \reporttitle\ - \student},
+	pdfauthor={\student},
+	pdfsubject={\reporttitle},
+	pdfkeywords={\reporttype, \dhbws\opt{PA}{, \company}}
+} 
+
 \newcommand{\settocdepth}[1]{
 	\addtocontents{toc}{
 		\protect
@@ -38,8 +46,8 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 }
 
 \newcommand{\head}[1] {
- 	\lhead{\ifthispageodd{\opt{conf}{\slshape \confidential}}{\slshape #1}}
- 	\rhead{\ifthispageodd{\slshape #1}{\opt{conf}{\slshape \confidential}}}
+ 	\lhead{\ifthispageodd{}{\slshape #1}}
+ 	\rhead{\ifthispageodd{\slshape #1}{}}
  }
 
 \newcommand{\headAndToc}[1] {
@@ -56,17 +64,24 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 	}
 }
 
-\hypersetup{
-	pdftitle={\reporttype\ \opt{conf}{\confidential\ }- \reporttitle\ - \student},
-	pdfauthor={\student},
-	pdfsubject={\reporttitle},
-	pdfkeywords={\reporttype, \dhbws\opt{PA}{, \company}}
-} 
+%% math
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\order}{\mathrm{order\:}}
+\newcommand{\IV}{\mathrm{IV}}
+\newcommand{\tmod}{\!\!\mod}
 
-\renewcommand\sectionmark[1]{%
- \def\sectionname{#1}%
- \markright{\thesection #1}%oder was aus immer
- }
+
+
+ \renewcommand\sectionmark[1]{%
+  \def\sectionname{#1}%
+  \markright{\thesection #1}%oder was aus immer 
+  } 
+  
+  \renewcommand\subsectionmark[1]{%
+  \def\subsectionname{#1}% 
+  \markright{\thesubsection #1}%oder was aus immer 
+  } 
 	
 \graphicspath{{./ref/images/}}
 
@@ -88,10 +103,10 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 \renewcommand{\headrulewidth}{1.0pt}
 \renewcommand{\headheight}{30pt}
 
-% \chead{\reporttype\ \opt{conf}{- \confidential}}
-% \lhead{\includegraphics*[width=2.0cm]{dhbwlogo_small}}
-% \rhead{\includegraphics*[width=2.0cm]{\companylogosmall}}
-% \cfoot{\student, \kurs\\ \dhbw\opt{PA}{\\ \company,\ \educationdepartment,\ \lokation\ }}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.5em}
+\clubpenalty 10000
+\widowpenalty 10000
 
 \chead{}
 \cfoot{}
@@ -118,9 +133,6 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 \addtocounter{page}{1}
 
 \phantomsection
-\headAndTocENDE{Declaration of Academic Honesty}{Erkl{\"a}rung zur akademischen Ehrlichkeit}
-\opt{en}{\section*{Declaration of Academic Honesty}}
-\opt{de}{\section*{Erkl{\"a}rung zur akademischen Ehrlichkeit}}
 \input{sections/declaration}
 \clearpage
 
@@ -178,12 +190,16 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 %\shipout\null
 
 \pagenumbering{arabic}
-\head{\nouppercase{\leftmark}}
+% \head{\nouppercase{\leftmark}}
+  	\lhead{\ifthispageodd{}{\nouppercase{\leftmark}}}
+  	\rhead{\ifthispageodd{\rightmark}{}}
+%\fancyhead[LE]{\sffamily \nouppercase{\leftmark}  }
+% \fancyhead[RO]{\sffamily \nouppercase{\rightmark}  } 
 \include{sections/content}
 \pagenumbering{roman}
 
 \clearpage
-\newpage
+\newpage 
 
 \singlespacing
 

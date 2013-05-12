@@ -15,7 +15,8 @@ bib, %% make list of references at the end and import bib package. Use bib.bib a
 appendix, %% includes appendix. add sections in the file appendix.tex
 PA, %% inserts at the titlepage the company and such stuff
 %%Study, %% insert at the titlepage information without company and such stuff
-conf %% confidential, including header line with confidential text and a note on the titlepage
+2010, %% Bis Jahrgang 2010 --> Ehrenwörtliche Erklärung
+%% 2011, %% Ab Jahrgang 2011 --> Ehrenwörtliche Erklärung
 ]{optional} 
  
 \opt{en}{\usepackage[american]{babel}} 
@@ -104,8 +105,4 @@ conf %% confidential, including header line with confidential text and a note on
 \opt{Study}{
 	\opt{en}{\newcommand{\reporttype}{Study Report}}
 	\opt{de}{\newcommand{\reporttype}{Studienarbeit}}
-}
-\opt{conf}{
-	\opt{en}{\newcommand{\confidential}{\companyshort\ Confidential}}
-	\opt{de}{\newcommand{\confidential}{\companyshort\ Vertraulich}}
 }
