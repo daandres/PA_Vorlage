@@ -2,8 +2,8 @@
 %% Choose packages you want by using comments in the list below. 
 
 \usepackage[
-%% en, %% English text and wording
-de, %% German text and wording
+en, %% English text and wording
+%% de, %% German text and wording
 %%singlepage, %% Put sitenumbers always on the right
 doublepage, %% Put sitenumbers alternating on the left and on the right. The first number starts always right, so be sure that you insert a blank page with \shipout\null
 acronym, %% Use acronyms and print a acronym table. Use acronym.tex to add acronyms
@@ -13,7 +13,8 @@ tables, %% make list of tables and include table packages, also supertabular
 intro, %% include introduction file and make bookmark
 bib, %% make list of references at the end and import bib package. Use bib.bib as bibliography
 appendix, %% includes appendix. add sections in the file appendix.tex
-PA, %% inserts at the titlepage the company and such stuff
+%%PA, %% inserts at the titlepage the company and such stuff
+Bachelor, %% inserts at the titlepage the company and such stuff: Bachelorfmat
 %%Study, %% insert at the titlepage information without company and such stuff
 2010, %% Bis Jahrgang 2010 --> Ehrenwörtliche Erklärung
 %% 2011, %% Ab Jahrgang 2011 --> Ehrenwörtliche Erklärung
@@ -37,10 +38,11 @@ PA, %% inserts at the titlepage the company and such stuff
 \opt{de}{\newcommand{\reportend}{enddatum}}
 \opt{en}{\newcommand{\handoverdate}{31/13/3113}}
 \opt{de}{\newcommand{\handoverdate}{31.13.3113}}
- 
+\opt{en}{\newcommand{\timerange}{12 weeks}}
+\opt{de}{\newcommand{\timerange}{12 Wochen}}
+
 \newcommand{\tutor}{Name Tutor}
 \newcommand{\companylogo}{icon-hinweis} %% filname of logo for titlepage
-\newcommand{\companylogosmall}{} %% filename for logo on all other pages
 \opt{Study}{
 	\newcommand{\reportsemester}{5. - 6. Semester}
 }
@@ -48,14 +50,17 @@ PA, %% inserts at the titlepage the company and such stuff
 	\newcommand{\businessunit}{Business Unit} 
 	\newcommand{\department}{Department}
 	\newcommand{\company}{Company}
-	\newcommand{\companyshort}{COMP} %% used in Confidential flag on each site
 	\opt{en}{\newcommand{\educationdepartment}{Education department}}
 	\opt{de}{\newcommand{\educationdepartment}{Ausbildungsabteilung}}
 	\opt{en}{\newcommand{\lokation}{Mannheim}}
 	\opt{de}{\newcommand{\lokation}{Mannheim}}
 	\newcommand{\manager}{Education Manager}
 }
-
+\opt{Bachelor}{
+	\newcommand{\degree}{Bachelor of Science}
+	\newcommand{\company}{Company}
+	\newcommand{\lokation}{Mannheim}
+}
 
 
 \newcommand{\dhbws}{DHBW Mannheim}
@@ -63,7 +68,7 @@ PA, %% inserts at the titlepage the company and such stuff
 \opt{de}{\newcommand{\dhbw}{Duale Hochschule Baden-W{\"u}rttemberg Mannheim}}
 \opt{en}{\newcommand{\studiengang}{applied computer science}}
 \opt{de}{\newcommand{\studiengang}{Angewandte Informatik}}
-\newcommand{\prof}{Prof. Dr. H. Hofmann}
+\newcommand{\prof}{Prof. Dr. H. Hofmann} % Tutor at DHBW
 
 \opt{listings}{
 	\newcommand{\listingssetup}{
@@ -88,7 +93,7 @@ PA, %% inserts at the titlepage the company and such stuff
 			title=\lstname,                 % show the filename of files included with \lstinputlisting;
 			                                % also try caption instead of title
 			keywordstyle=\color{blue},      % keyword style
-			commentstyle=\color{dkgreen},   % comment style
+			commentstyle=\color{green},   % comment style
 			stringstyle=\color{gray},       % string literal style
 			escapeinside={\%*}{*)},         % if you want to add LaTeX within your code
 			morekeywords={*,...}            % if you want to add more keywords to the set
@@ -97,10 +102,14 @@ PA, %% inserts at the titlepage the company and such stuff
 }
 
 %%%%%%%%%%%%
-%% Folgende Angaben müssen nicht verändert werden. Werden aber zur einfacheren ANpassung (falls nötig) hier aufgeführt
+%% Folgende Angaben müssen nicht verändert werden. Werden aber zur einfacheren Anpassung (falls nötig) hier aufgeführt
 \opt{PA}{
 	\opt{en}{\newcommand{\reporttype}{Internship Report}}
 	\opt{de}{\newcommand{\reporttype}{Projektarbeit}}
+}
+\opt{Bachelor}{
+	\opt{en}{\newcommand{\reporttype}{Bachelor thesis}}
+	\opt{de}{\newcommand{\reporttype}{Bachelorarbeit}}
 }
 \opt{Study}{
 	\opt{en}{\newcommand{\reporttype}{Study Report}}

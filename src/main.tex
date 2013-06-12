@@ -25,6 +25,7 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 	\usepackage{colortbl} %% use defined colors in tables
 	\usepackage{booktabs} %% better horizontal lines in tables with \toprule[<breite>], \midrule[<breite>], \cmidrule[<breite>](trim){a-b}, \bottomrule 
 	\usepackage{supertabular}
+	\usepackage{longtable}
 } 
 \opt{listings}{
 	\usepackage{listings} 
@@ -125,7 +126,15 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 \opt{en}{\pdfbookmark[1]{Titlepage}{titlepage}}
 \opt{de}{\pdfbookmark[1]{Titelseite}{titlepage}}
 \begin{titlepage} 
-	\input{titlepage}
+	\opt{PA}{
+		\input{titlepage}
+	}
+	\opt{Study}{
+		\input{titlepage}
+	}
+	\opt{Bachelor}{
+		\input{titlepageBachelor}
+	}
 \end{titlepage} 
  
 \clearpage
