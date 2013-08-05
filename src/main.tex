@@ -6,7 +6,8 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 ]{scrartcl}
 \input{setup}
 
- \usepackage{fancyhdr} %für Kopf- und Fußzeilen
+\usepackage{lipsum}
+\usepackage{fancyhdr} %für Kopf- und Fußzeilen
 %\usepackage{scrpage2}
 \usepackage[utf8]{inputenc} %Zeichenkodierung
 \usepackage{caption}
@@ -147,7 +148,11 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 
 \phantomsection
 \headAndToc{Abstract}
-\include{sections/abstract}
+\section*{Abstract}
+	\paragraph{English} 
+	\input{sections/abstractEN}
+	\paragraph{German} 
+	\input{sections/abstractDE}
 \clearpage
 
 \phantomsection
@@ -225,5 +230,8 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 	\opt{de}{\pdfbookmark[0]{Anhang}{appendix}}
 	\include{sections/appendix}
 }
+
+\pagestyle{empty}
+\include{sections/abstractSeperatePages}
 
 \end{document}
