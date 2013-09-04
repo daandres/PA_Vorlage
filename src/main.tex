@@ -173,19 +173,21 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 	\clearpage
 }
 
-\phantomsection
 \opt{figures}{
+	\phantomsection
  	\headAndTocENDE{List of Figures}{Abbildungsverzeichnis}
 	\listoffigures
 	\clearpage
 }
 
 \opt{tables}{
+	\phantomsection
  	\headAndTocENDE{List of Tables}{Tabellenverzeichnis}
 	\listoftables 
 	\clearpage
 }
 \opt{listings}{
+	\phantomsection
  	\headAndTocENDE{Listings}{Quellcodeverzeichnis}
 	\lstlistoflistings
 	\clearpage
@@ -203,6 +205,8 @@ pointlessnumbers ,      % überschriftnummerierung ohne Punkt
 }
 %\shipout\null
 
+\setcounter{table}{0}
+\setcounter{figure}{0}
 \pagenumbering{arabic}
 % \head{\nouppercase{\leftmark}}
   	\lhead{\ifthispageodd{}{\nouppercase{\leftmark}}}
