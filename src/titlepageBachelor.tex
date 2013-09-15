@@ -1,5 +1,6 @@
 \begin{titlepage}
-	\begin{longtable}{p{.4\textwidth} p{.4\textwidth}}
+	\begin{longtable}{>{\centering\arraybackslash}p{.5\textwidth}
+	>{\centering\arraybackslash}p{.5\textwidth}}
 	  {\includegraphics*[height=2.6cm]{\companylogo}} & 
 	  {\includegraphics*[height=2.6cm]{dhbwlogo}}
 	\end{longtable}
@@ -7,7 +8,7 @@
 	\begin{center}
 	  \vspace*{12mm}	{\LARGE\bf \reporttitle }\\
 	  \vspace*{6mm}		{\large\bf \reportsubtitle}\\
-      \vspace*{12mm}    {\LARGE\bf \reporttype}\\
+      \vspace*{12mm}    {\LARGE\bf \MakeUppercase{\reporttype}}\\
 	  \vspace*{12mm}	\opt{de}{für die Prüfung zum}\opt{en}{for the} \\
 	  \vspace*{3mm} 	{\bf \degree}\\
 	  \vspace*{12mm}	\opt{de}{des Studienganges}\opt{en}{at Course of Studies} \studiengang\\
@@ -26,9 +27,9 @@
 		\opt{en}{\textbf{Student ID, Course}}  		 \>  \matrikel, \kurs\\
 		\opt{de}{\textbf{Ausbildungsfirma}}
 		\opt{en}{\textbf{Company}}      			 \>  \company, \lokation\\
-		\opt{de}{\textbf{Betreuer}}
+		\opt{de}{\textbf{Betreuer der Ausbildungsfirma}}
 		\opt{en}{\textbf{Supervisor in the Company}} \>  \tutor\\
-		\opt{de}{\textbf{Gutachter}}
+		\opt{de}{\textbf{Gutachter der Dualen Hochschule}}
 		\opt{en}{\textbf{Reviewer}}            		 \>  \prof
 	\end{tabbing}
 	\end{spacing}
